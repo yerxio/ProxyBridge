@@ -1,5 +1,24 @@
 # ProxyBridge
 
+## 项目状态：最终版
+
+本项目当前版本 `0.1.0` 为最终版，功能已冻结，后续停止开发与功能扩展。
+
+停止开发的原因是：**已有成熟工具：GOST，本项目价值有限**。
+
+GOST 已经覆盖本项目的核心场景（本地 HTTP 代理、带认证的上游 HTTP 代理以及
+HTTPS `CONNECT` 隧道转发），并且是开源项目。官方仓库显示其采用 **MIT License**：
+<https://github.com/go-gost/gost>。使用场景可直接参考 GOST 官方的 HTTP 隧道文档：
+<https://latest.gost.run/en/tutorials/http-tunnel/>。
+
+对应的替代启动方式示例：
+
+```bash
+gost -L http://127.0.0.1:18888 -F http://USER:PASSWORD@HOST:PORT
+```
+
+本仓库保留当前实现、文档和测试作为最终归档版本，不再接受新的功能开发目标。
+
 将**带认证的 HTTP 上游代理**桥接为本地普通 HTTP 代理，供 Chrome、curl、自动化工具等使用。应用只需要连接本地监听端口，无需支持上游代理用户名和密码。
 
 > 当前版本仅实现 HTTP 上游代理（包括 HTTPS `CONNECT` 隧道）。SOCKS5、VMess 等作为后续可插拔传输类型预留，当前不实现。
